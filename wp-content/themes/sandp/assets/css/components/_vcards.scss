@@ -1,0 +1,76 @@
+/*--------------------------------------------------- 
+V-Cards
+---------------------------------------------------  */
+.info-cards{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: $mq-med){
+    flex-direction: row;
+  }  
+
+  .info-card{
+    padding: $pad 0;
+    text-align: center;
+
+    @media(min-width: $mq-med){
+      flex-basis: 50%;
+    }
+    &__link{
+      // flex-basis: 100%;
+      padding: $pad-lg 0;
+      text-align:center;
+      background-color: $color-softgrey;
+      border-bottom: 1px solid #fff;
+      transition: all 1s ease;
+
+      @media (min-width: $mq-med){
+        flex-basis: 50%;
+        max-width: 50%;
+        border-right: 1px solid #fff;
+      }
+
+      &:last-child{
+        border-right: 0;
+      }
+
+      &:hover{
+        background-color: #fff;
+        transition: all 1s ease;
+      }
+    }
+
+    &__name, &__title{
+      @extend %font-title-light;
+    }
+
+    &__email{
+      @extend %font-links;
+    }
+    &__content{
+      @extend %font-uppercase;
+      font-family: $font-header;
+    }
+    &__list{
+
+    }
+    &__list-item{
+      padding-bottom: 0.25em;
+    }
+  }
+}
+.info-cards--dark{
+  .info-card{
+    background-color: $color-dark;
+    color: #fff;
+    @media (min-width: $mq-med){
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+  }
+  a{
+    @extend %font-links;
+    @include link-line(#fff, $color-light);
+  }
+
+}

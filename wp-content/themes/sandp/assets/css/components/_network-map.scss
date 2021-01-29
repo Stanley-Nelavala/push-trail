@@ -1,0 +1,278 @@
+//--------------------------------------------------- 
+// Networks
+//---------------------------------------------------
+.networks {
+  position: relative;
+
+  background-color: $color-grey;
+}
+
+//--------------------------------------------------- 
+// Network Map : RWD SVG setup
+//---------------------------------------------------
+.network-map-wrap {
+  position: relative;
+
+  height: 0;
+  padding: {
+    top: 1em;
+    bottom: 78%;
+  }
+
+  @media (min-width: $mq-med) {
+    padding: {
+      top: 2em;
+      bottom: 72%;
+    }
+  }
+
+  .network-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+  }
+}
+
+//--------------------------------------------------- 
+//  Network Map Wrap Med
+//  Network map for med and up
+//---------------------------------------------------
+.network-map-wrap--med {
+
+  @media (max-width: $mq-med) {
+    display: none;
+  }
+}
+
+//--------------------------------------------------- 
+//  Network Map Wrap Mobile
+//  Network map for med and down
+//---------------------------------------------------
+.network-map-wrap--mobile {
+  padding-bottom: 124%;
+
+  @media (min-width: $mq-med) {
+    display: none;
+  }
+}
+
+//--------------------------------------------------- 
+// Network Map : Small
+//---------------------------------------------------
+.network-map--mobile {
+
+  @media (min-width: $mq-med) {
+    display: none;
+  }
+
+  .network-map__flightpaths path {
+    stroke-width: 2.1px;
+    opacity: 0.2;
+  }
+
+  .st0 {
+    fill: #333232;
+  } 
+  .st1 {
+    fill: #FFFFFF;
+  } 
+  .st2 {
+    fill: #474545;
+  } 
+  .st3 {
+    fill: #969292;
+  } 
+  .st4 {
+    fill: #7A7878;
+  } 
+  .st5 {
+    fill:none;
+    stroke: #FFFFFF;
+    stroke-width: 0.5035;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 2.517520e-02,2.2658;
+  } 
+  .st6 {
+    fill: #BBB8B8;
+  } 
+  .st7 {
+    fill: #2CBBAB;
+  } 
+  .st8 {
+    fill: #5EA3D8;
+  } 
+  .st9 {
+    fill: #696B6D;
+  }
+}
+
+//--------------------------------------------------- 
+// Network Map : Med
+//---------------------------------------------------
+.network-map--med {
+
+  @media (max-width: $mq-med) {
+    display: none;
+  }
+
+  .network-map__dots {
+
+    & > .dots-item {
+      opacity: 0;
+    }
+
+    &.is-animated > .dots-item {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+
+      animation: map-in 0.5s ease both;
+      @include nth-ani-delay(32, 0.15s);
+    }
+  }
+
+  .network-map__countries,
+  .network-map__cities,
+  .network-map__stats {
+
+    & > .layer-item {
+      opacity: 0;
+    }
+
+    &.is-animated > .layer-item {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+
+      animation: map-in 1s ease both;
+      // @include nth-ani-delay(32, 0.15s);
+    }
+  }
+
+  .network-map__countries,
+  .network-map__cities {
+
+    &.is-animated > .layer-item {
+      @include nth-ani-delay(32, 0.15s);
+    }
+  }
+
+  .network-map__stats {
+
+    &.is-animated > .layer-item {
+      @include nth-ani-delay(6, 0.25s);
+    }
+  }
+
+  .network-map__flightpaths {
+    
+    & > .layer-item {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    path {
+      stroke-width: 2px;
+    }
+
+    &.is-animated, &.is-animated > .layer-item {
+      opacity: 0.7;
+      transition: opacity 1s 1s ease;
+      @include nth-trans-delay(32, 0.75s);
+    }
+  }
+
+  .st0 {
+    fill: #333232;
+  } 
+  .st1 {
+    fill: #474545;
+  } 
+  .st2 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #333232;
+  } 
+  .st3 {
+    fill: #FFFFFF;
+  } 
+  .st4 {
+    fill: #969292;
+  } 
+  .st5 {
+    fill: #7A7878;
+  } 
+  .st6 {
+    display: none;
+  } 
+  .st7 {
+    display: inline;
+    fill: #696B6D;
+  } 
+  .st8 {
+    display: inline;
+    fill: none;
+    stroke: #696B6D;
+    stroke-miterlimit: 10;
+  } 
+  .st9 {
+    display:inline;
+    fill:#5EA3D8;
+    stroke:#474545;
+    stroke-width:3;
+    stroke-miterlimit:10;
+  } 
+  .st10 {
+    display:inline;
+    fill:none;
+    stroke:#696B6D;
+    stroke-width:2;stroke-miterlimit:10;
+  } 
+  .st11 {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 1.3279;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 6.639654e-02,5.9757;
+  } 
+  .st12 {
+    fill: #BBB8B8;
+  } 
+  .st13 {
+    fill: #2CBBAB;
+  } 
+  .st14 {
+    fill: #5EA3D8;
+  } 
+  .st15 {
+    fill: #696B6D;
+  }
+}
+
+//--------------------------------------------------- 
+// Map animations (fade down and in)
+//---------------------------------------------------
+@keyframes map-in  {
+  from { opacity: 0; transform:translateY(-0.5em); }
+  to { opacity: 1; transform:translateY(0); }
+}
+
+//--------------------------------------------------- 
+// Map aniamtions dash offset
+//---------------------------------------------------
+@keyframes map-dashs  {
+  from { stroke-dashoffset: 1400; }
+  to { stroke-dashoffset: 0; }
+}
+
+//--------------------------------------------------- 
+// Map aniamtions dash offset
+//---------------------------------------------------
+@keyframes map-dash  {
+  0% { opacity: 0; } 
+  30% { opacity: 1; stroke-dashoffset: 300; }
+  100% { stroke-dashoffset: 0; }
+}

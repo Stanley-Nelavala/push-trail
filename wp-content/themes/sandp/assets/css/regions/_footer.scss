@@ -1,0 +1,137 @@
+/*----------------------------------------------
+--Site footer
+-----------------------------------------------*/
+.site-footer {
+  position: relative;
+  background-color: $color-black;
+  padding: $pad-med 0 $pad-sm;
+  color: #fff;
+  text-align:center;
+
+  &__navs{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: $grid-max-width-xl;
+    margin: 0 auto;
+    @media (min-width: $mq-med){
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @media (min-width: $mq-large){
+      //max-width: 100%;
+    }
+  }
+
+  &__slogan{
+    @extend %font-links;
+    font-size: $font-xsmall;
+    margin: 0 auto;
+    @media (min-width: $mq-med){
+      z-index: 0;
+      position: absolute;
+      top: 10%;
+      left: 0;
+      right: 0;
+    }
+    @media (max-width: $mq-med){
+      order: 1;
+      padding-bottom: 2em;
+    }
+    @media (min-width: $mq-med) and (max-width: $mq-large){
+      max-width: 15em;
+    }
+  }
+  &__nav{
+    z-index: 2;
+    position: relative;
+
+    @media (max-width: $mq-med) {
+      order: 2;
+      padding: 0.5em 0;
+    }
+  }
+  &__nav ul{
+    display: flex;
+    align-items: center;
+
+    a{
+      @include nav-links(#fff);
+    }
+  }
+  &__nav:first-child ul{
+    li{
+      padding: 0 1em;
+      @media (min-width: $mq-xlarge){
+        padding: 0 1.75em;
+      }
+
+      &:first-child{
+        @media (min-width: $mq-med) {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  &__nav:last-child ul{
+    li{
+      padding: 0 1em;
+      @media (min-width: $mq-xlarge){
+        padding: 0 1.75em;
+      }
+
+      &:last-child{
+
+        @media (min-width: $mq-med) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  &__aside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5em $grid-col-pad 0;
+  }
+  &__logo{
+    height: 2em;
+    max-width: 5em;
+    width: 5em;
+    fill: #fff;
+    margin-bottom: 1em;
+  }
+  address, &__copy{
+    margin: 0 auto;
+    color: rgba(255,255,255,0.5);
+    font-family: $font-paragraph;
+    font-size: $font-xxsmall;
+    @extend %font-uppercase;
+  }
+  &__copy{
+    color: rgba(255,255,255,0.3);
+
+    a{
+      @include link-line(rgba(255,255,255,0.3), $color-light);
+    }
+  }
+}
+
+/*----------------------------------------------
+--Flex-based sticky footer.Strangely enough, the
+footer itself doesn't need CSS, but body and main
+do. Comment this out in app.scss if not wanted.
+-----------------------------------------------*/
+// body {
+//   display: flex;
+//   min-height: 100vh;
+//   flex-direction: column;
+// }
+
+// main {
+//   flex-grow: 1;
+// }

@@ -1,0 +1,83 @@
+/*----------------------------------------------
+-Forms
+-----------------------------------------------*/
+
+/*----------------------------------------------
+--Inputs - all
+-----------------------------------------------*/
+input, textarea, select {
+  display: block;
+  width: 100%;
+  padding: 0.95em 0.5em 1em;
+  font-family: $font-paragraph;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: $color-dark;
+  background: $color-white;
+  border: $form-borderwidth solid $form-bordercolor;
+  border-radius: $base-borderradius;
+  box-shadow: none;
+  outline: 0;
+  transition: all .25s ease-in;
+  -webkit-appearance: none;
+
+ 
+  &:focus {
+    border-color: $color-alpha;
+  }
+}
+
+.field--minimal, .form--minimal input:not(.btn-signup){
+  border: 0;
+  border-bottom: $form-borderwidth solid $form-bordercolor;
+  padding-left: 0;
+}
+
+/*----------------------------------------------
+--Labels
+Need to a hide a label? Use .u-off-screen
+-----------------------------------------------*/
+label {
+  display: inline;
+  font-family: $font-paragraph;
+  font-size: 1em;
+}
+
+/*----------------------------------------------
+--Helper class for input groups
+-----------------------------------------------*/
+.input-group {
+  margin: 1em auto;
+
+  input:first-child{
+    border-right: 0;
+  }
+
+  input[type="submit"]{
+        min-width: 26%;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+/*----------------------------------------------
+--Placeholders
+-----------------------------------------------*/
+::placeholder {
+  color: $form-placeholdercolor;
+  //font-size: 0.8em;
+
+}
+
+
+/*----------------------------------------------
+--Misc
+-----------------------------------------------*/
+
+fieldset {
+  margin: 1em 0;
+}
+legend {
+  margin-left: -.75em;
+}

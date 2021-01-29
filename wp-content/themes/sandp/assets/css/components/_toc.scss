@@ -1,0 +1,77 @@
+.toc{
+
+  @include flex-grid(2, 3, $pad: 1em);
+  max-width: 46em;
+  margin: 0 auto;
+
+  br{
+    display: none;
+  }
+  &__item{
+    text-align: center;
+    margin-bottom: 1.5em;
+
+    span{
+      display:block;
+    }
+  }
+  &__numb{
+    margin-bottom: 1.4em;
+    font-size: $font-xsmall;
+    font-weight: 600;
+
+  }
+  &__numb, &__title{
+    @extend %font-title-light;
+  }
+  &__title{
+    font-weight: 500;
+  }
+
+  &__title{
+    word-spacing: 9999px;
+  }
+}
+
+
+
+/* USEAGE
+<ul class="toc">
+  <li class="toc__item">
+    <a class="toc__link" href="">
+      <span class="toc__numb">01</span>
+      <span class="toc__title">Design</span>
+    </a>
+  </li>
+  <li class="toc__item">
+    <a class="toc__link" href="">
+      <span class="toc__numb">02</span>
+      <span class="toc__title">Design</span>
+    </a>
+  </li>
+  <li class="toc__item">
+    <a class="toc__link" href="">
+      <span class="toc__numb">03</span>
+      <span class="toc__title">Design</span>
+    </a>
+  </li>
+  <li class="toc__item">
+    <a class="toc__link" href="">
+      <span class="toc__numb">04</span>
+      <span class="toc__title">Design</span>
+    </a>
+  </li>
+  <li class="toc__item">
+    <a class="toc__link" href="">
+      <span class="toc__numb">05</span>
+      <span class="toc__title">Design</span>
+    </a>
+  </li>
+  <li class="toc__item">
+    <a class="toc__link" href="">
+      <span class="toc__numb">06</span>
+      <span class="toc__title">Design</span>
+    </a>
+  </li>
+</ul>
+*/

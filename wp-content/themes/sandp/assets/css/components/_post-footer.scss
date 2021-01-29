@@ -1,0 +1,66 @@
+/*---------------------------------------------------
+post-footer
+Footer region used on single post layouts
+
+@see: partials/partial-footer
+---------------------------------------------------  */
+.post-footer{
+  position: relative;
+  padding: $pad-sm + 1em 0;
+  border-bottom: 1px solid;
+  backface-visibility: hidden;
+  text-align:center;
+
+  &__figure {
+
+    img {
+      display: block;
+      height: 5em;
+      width: 5em;
+      margin: 0 auto;
+
+      border-radius: 100%;
+    }
+
+    & + .post-footer__author {
+      margin-top: 1em;
+    }
+  }
+
+  &__bio {
+    max-width: 30em;
+    margin: 1em auto;
+  }
+
+  &__link {
+    @extend %font-links-small;
+    display: inline-block;
+    color: $color-darkgrey;
+  }
+}
+
+// Post Shares
+.post-shares{
+  margin: 2em auto;
+  text-align:center;
+
+  &__title{
+    @extend %font-h5;
+    margin: 0 0 1em;
+    color: $color-darkgrey;
+  }
+
+  &__list{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    li{
+      padding: 0 0.75em;
+    }
+    a{
+      @extend %font-links-small;
+    }
+  }
+}

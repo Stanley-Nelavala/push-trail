@@ -1,0 +1,84 @@
+/*----------------------------------------------
+  Map
+-----------------------------------------------*/
+#map, .map, .locations{
+  background-color: #111;
+    &:after{
+      @media (max-width: $mq-med){
+        content: '';
+        z-index: 5;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        
+      }
+    }
+  &__map, #map-canvas{
+    height: 100%;
+    min-height: 25em;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+
+    @media (min-width: $mq-med) {
+      height: 35em;
+    }
+  }
+  .no-js & { // For users with Javascript disbabled
+    display: none;
+  }
+}
+
+.gm-style-iw > div {
+  padding: .3em;
+  font-family: $font-paragraph;
+  font-size: 1.3em;
+  line-height: 1.4;
+
+  & > div {
+    white-space: nowrap;
+    overflow: visible !important;
+  
+    &::first-line {
+      font-weight: 700;
+    }
+  }
+}
+.gmnoscreen, .gm-style-cc{
+  display: none !important;
+}
+
+#map{
+    height: 100%;
+    min-height: 25em;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+
+    @media (min-width: $mq-med) {
+      height: 35em;
+    }
+  }
+
+
+#map-canvas {
+    height: 100%;
+    min-height: 45em;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+}
+/* 
+  Weird scrolbars displaying on info window intit, fixed by:
+  http://www.canbike.ca/information-technology/2013/11/01/firefox-infowindow-scrollbar-fix-google-maps-api-v3.html
+*/
+.noscrollbar {
+  line-height:1.35;
+  overflow:hidden;
+  white-space:nowrap;
+} 
+
+
+

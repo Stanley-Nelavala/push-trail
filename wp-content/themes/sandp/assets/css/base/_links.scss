@@ -1,0 +1,15 @@
+/*----------------------------------------------   
+Links
+-Basic Link Styles
+--
+@see scss/tools/mixins
+@see components/buttons for button styles
+-----------------------------------------------  */
+a{
+  @include link-styles($color-dark, lighten($color-dark, 30));
+}
+
+
+.content a{
+  @include link-lines($color-dark, $color-grey, #999);
+}

@@ -1,0 +1,14 @@
+/*----------------------------------------------
+-Posts
+Used for post index
+-----------------------------------------------*/
+.folio{
+  padding: $pad 0;
+  background-color: $color-black;
+  // Posts Grid
+  &__grid{
+    @include flex-grid(1,2);
+  }
+}
+
+

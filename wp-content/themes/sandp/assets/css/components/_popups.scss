@@ -1,0 +1,292 @@
+/*----------------------------------------------
+POPUPS
+Universal popup pattern, for modals, overlays, full viewport videos, etc.
+
+@see: js/components/_popups.js
+-----------------------------------------------*/
+
+.popup{
+  z-index: -2;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  overflow-y: auto;
+  opacity: 0;
+  color: #fff;
+  background: rgba(0,0,0,0.8);
+  transition: all 0.5s ease;
+
+  //List Items animation setup
+  li{
+    color: #fff;
+    opacity: 0;
+    transform: translateY(-1.5em);
+  }
+
+  //Open
+  .popup--is-open &{
+    z-index: 999 !important;
+    height: 100vh;
+    opacity: 1;
+    background: rgba($color-dark, 0.9);
+    transition: opacity 0.6s ease, z-index 0s ease;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    //List items animate in
+    li{
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.3s ease;
+      @include nth-trans-delay(8, 0.1s)
+    }
+  }
+
+  .popup--is-open &.popup--light{
+    background: rgba(#fff, 0.9);
+  }
+}
+
+.popup--is-open{
+  .site-header{
+    z-index: 0;
+  }
+}
+
+/*----------------------------------------------
+-Pop Overs - CLose
+-----------------------------------------------*/
+.popup__close {
+  z-index: 991;
+  position:fixed;
+  height: 3rem;
+  width: 2rem;
+  top: 1em;
+  right: 1em;
+
+  &:active{
+    border: none;
+  }
+}
+
+.popup__x{
+  display: block;
+  position: absolute;
+  top: 1em;
+
+  &:hover{
+    cursor: pointer;
+  }
+  &:after, &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0 !important;
+    width: 1.855555rem;
+    height: 1px;
+    display: block;
+    background: #fff !important;
+    zoom: 1;
+    transition: all 0.4s ease-in-out;
+  }
+  &:after{
+    transform: rotate(45deg);
+  }
+  &:before {
+    transform: rotate(-45deg);
+  }
+}
+
+.popup--light{
+  .popup__x:before,.popup__x:after{
+    background: $color-dark !important;
+  }
+}
+
+.popup__vid{
+  display: flex;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  #player video{
+    object-fit:cover;
+  }
+}
+
+  .video-wrapper video{
+    object-fit:cover;
+  }
+
+
+ .popup-list{
+    li{
+      padding: 0.25em 0;
+    }
+    a{
+      @extend %font-uppercase;
+      font-weight: 500;
+      @extend %font-h4;
+    }
+ }
+
+
+
+
+
+
+
+
+ //----------------------------------------------
+//  Pop Overs
+//  PopUp styles for our popups.js
+//  Supports all kinds of shit, modals, full screen johns,
+//  full viewport vimeo vid, etc.
+//
+//  @group Popups
+//  @see js/components/_popups.js
+//  @see scss/components/_modals.scss
+//----------------------------------------------
+.popup{
+  z-index: -2;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  overflow-y: auto;
+  opacity: 0;
+  color: #fff;
+  background: rgba(0,0,0,0.8);
+  transition: all 0.5s ease;
+
+  // List Items animation setup
+  li{
+    color: #fff;
+    opacity: 0;
+    transform: translateY(-1.5em);
+  }
+
+//----------------------------------------------
+//  Pop Up - Is Open State
+//----------------------------------------------
+  .popup--is-open &.is-open,
+  .popup--auto-open &.is-open{
+    z-index: 999 !important;
+    height: 100%;
+    opacity: 1;
+    background: rgba($color-dark, 0.9);
+    transition: opacity 0.6s ease;
+
+    //List items animate in
+    li{
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.3s ease;
+      @include nth-trans-delay(8, 0.1s)
+    }
+  }
+
+  // Light modifier
+  .popup--is-open &.popup--light{
+    background: rgba(#fff, 0.9);
+  }
+
+  // Lightgrey modifier
+  .popup--is-open &.popup--lightgrey{
+    background: rgba(#eee, 0.9);
+  }
+}
+
+//----------------------------------------------
+//  Hide Header
+//----------------------------------------------
+.popup--is-open{
+
+  // Hide site header
+  .site-header{
+    z-index: 0;
+  }
+}
+
+//----------------------------------------------
+//  Pop Ups - Closers
+//----------------------------------------------
+.popup__close {
+  z-index: 991;
+  position:fixed;
+  height: 3rem;
+  width: 2rem;
+  top: 1em;
+  right: 1em;
+
+  &:active{
+    border: none;
+  }
+}
+
+.popup__x{
+  display: block;
+  position: absolute;
+  top: 1em;
+
+  &:hover{
+    cursor: pointer;
+  }
+  &:after, &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0 !important;
+    width: 1.855555rem;
+    height: 1px;
+    display: block;
+    background: #fff !important;
+    zoom: 1;
+    transition: all 0.4s ease-in-out;
+  }
+  &:after{
+    transform: rotate(45deg);
+  }
+  &:before {
+    transform: rotate(-45deg);
+  }
+}
+
+//----------------------------------------------
+//  Color closer x based on theme
+//----------------------------------------------
+.popup--light, .popup--lightgrey{
+  .popup__x:before,.popup__x:after{
+    background: $color-dark !important;
+  }
+}
+
+//----------------------------------------------
+//  Pop Up - Video reqs. Also use the flex-vid class
+//----------------------------------------------
+.popup__vid{
+  display: flex;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.video-wrapper video{
+  //object-fit:cover;
+}

@@ -1,0 +1,65 @@
+/*----------------------------------------------
+POST CONTENT
+Content like on blog posts and other single post bits
+
+@see scss/base/_lists.scss for post-content lists
+@see scss/base/_typography.scss for global type stuff
+-----------------------------------------------  */
+
+.content{
+
+  // FIgures / Images
+  figure{
+    margin: 2.5em 0;
+    @media (min-width: $mq-med){
+      margin: 2.5em -5em;
+    }
+
+    img{
+      display: block;
+    }
+    br{
+      display: none;
+    }
+
+    figcaption{
+      margin: 0.4em auto;
+      font-size: $font-xsmall;
+      text-align: center;
+      color: $color-midgrey;
+    }
+  }
+  // Series of Images/Figures
+  figure ~ figure + figure{
+    margin-top: -1em;
+  }
+
+  // Subheaders
+  h2, h3, h4{
+    @extend %font-h5;
+    font-weight: 500;
+    margin: 1.5em 0 0.6em;
+  }
+
+  // Paragraphs
+  p{
+    margin-bottom: 1.35em;
+  }
+
+  //blockquotes
+
+  blockquote{
+    backface-visibility: hidden;
+    opacity: 1;
+    @media (min-width: $mq-med){
+      margin: 2em -3em;
+    }
+  }
+  blockquote p + p {
+    margin: 1em 0;
+  }
+}
+
+header.post-header + .content{
+  padding-top: 0;
+}

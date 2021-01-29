@@ -1,0 +1,191 @@
+/*----------------------------------------------
+Buttons Theme and Mixins
+01: Button Theme
+02: btn  : common btn that draws out
+03: btn-link : simple link button
+@see: scss/components/_buttons.scss
+-----------------------------------------------*/
+
+/*----------------------------------------------
+--Button - Setup Theme
+-----------------------------------------------*/
+%btn-theme{
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  @extend %font-links;
+  text-align: center;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: all 0.4s $ease-cb2;
+}
+/*
+.btn{
+ @extend %btn-theme;
+ @extend %font-links;
+}
+*/
+
+/*----------------------------------------------
+-btn-view - 
+@description: mixin that extends btn-theme to create a simple link with a left line interaction
+@params: $color
+-----------------------------------------------*/
+@mixin btn($color){
+  @extend %btn-theme;
+  color: $color;
+  margin-left: 4.2em;
+
+  &:after{
+    content: '';
+    top: 0;
+    right: 0;
+    height: 1px;
+    width: 100%;
+    background-color: $color;
+  }
+  
+  &:before{
+    content: '';
+    position: absolute;
+    top:50%;
+    left: -2.4em;
+    height: 1px;
+    width: 3em;
+    background-color: $color;
+    transition: all 0.25s ease;
+  }
+
+  .btn__text{
+    position: relative;
+    display: block;
+    padding: 0.459em 2.29em;
+    line-height: 1.5;
+    transition: transform 0.5s ease;
+
+    &:before, &:after{
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 0;
+      background-color: $color;
+    }
+    &:before{
+      top: 0;
+      left: 0;
+      transition: width 0.15s 0.45s $ease-cb3; // 4th
+    }
+    &:after{
+      bottom: 0;
+      right: 0;
+      transition: width 0.15s 0.15s $ease-cb3; // 2nd
+    }
+  }
+
+  .btn__text span{
+    &:before, &:after{
+      content: '';
+      position: absolute;
+      height: 0;
+      width: 1px;
+      background-color: $color;
+      transition: all 0.2s cubic-bezier(0.2, 0.3, 0.25, 0.9);
+    }
+    &:before{
+      left: 0;
+      bottom: 0;
+      transition: height 0.15s 0 $ease-cb3; // 1st
+    }
+    &:after{
+      right: 0;
+      top: 0;
+      transition: height 0.15s 0.3s $ease-cb3; // 3rd
+    }
+  }
+
+  &:hover, a:hover &{
+    @media (min-width: $mq-large){
+    cursor: pointer;
+
+    &:before{
+      width: 0;
+      transition: all 0.4s ease;
+    }
+    .btn__text{
+      transform: translateX(-2.2em);
+      transition: transform 0.5s ease, width 1s ease;
+
+      // Build Top and bottom borders via width
+      &:before{
+        width: 100%;
+        max-width: 100%;
+        transition: width 0.15s  $ease-cb3; // 1st
+      }
+      &:after{
+        width: 100%;
+         transition: width 0.15s 0.3s  $ease-cb3; // 3rd
+      }
+    }
+    // Build Left and Right borders via height;
+    .btn__text span{
+      &:before{
+        left: 0;
+        height: 100%;
+        transition: height 0.15s 0.45s $ease-cb3; // 4th
+      }
+      &:after{
+        right: 0;
+        height: 100%;
+        transition: height 0.15s 0.15s $ease-cb3; // 2nd
+      }
+    }  
+  }
+}
+}
+
+
+/*----------------------------------------------
+--btn-Link: Theme
+-----------------------------------------------*/
+@mixin btn-link($color){
+  @extend %btn-theme;
+  color: $color;
+  //margin-left: 4.2em;
+  //transform: translateX(4.2em);
+  span{
+    display: inline-block;
+    transform: translateX(1.9em);
+    transition: transform 0.4s ease;
+  }
+  &:before{
+    content: '';
+    position: absolute;
+    top:50%;
+    left: -3em;
+    height: 1px;
+    width: 3.5em;
+    background-color: $color;
+    transition: all 0.25s ease;
+  }
+
+  &:hover, a:hover &{
+    @media (min-width: $mq-large){
+      margin-left: 0;
+      cursor: pointer;
+
+      span{
+        transform: translateX(0);
+        transition: transform 0.4s ease;
+      }
+      &:before{
+        width: 0;
+        transition: all 0.4s ease;
+      }
+    }
+  }
+}

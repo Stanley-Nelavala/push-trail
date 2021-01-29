@@ -1,0 +1,172 @@
+/*----------------------------------------------
+Gallery
+Gallery blocks, that can be images or
+link blocks with content. Used for mondialite posts.
+
+-----------------------------------------------*/
+@mixin ratio-padding {
+  padding-bottom: 15em;
+  @media (min-width: $mq-med){
+    padding-bottom: 22em;
+  }
+  @media (min-width: $mq-xlarge){
+    padding-bottom: 20em;
+  }
+  @media (min-width: $mq-xxlarge){
+    padding-bottom: 22em;
+  }
+}
+
+.gallery{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @media (min-width: $mq-med){
+    flex-direction: row;
+  }
+  &.animated{
+    animation: bg-in 1s 1s ease both;
+  }
+}
+
+.gal{
+  position: relative;
+  width: 50%;
+  height: 15em;
+  flex-basis: 100%;
+  width: 100%;
+  @include bg-img-cover();
+  //padding-bottom: 50%;
+  background-color: $color-dark;
+  padding-bottom: 45%;
+  //overflow: hidden;
+  will-change: background;
+  @media (min-width: $mq-med){
+    height: 10em;
+    padding-bottom: 25%;
+  }
+  // Firefox Flexbox Hack, since it doesnt accept percentages
+  @-moz-document url-prefix() {
+    @include ratio-padding;
+  }
+  @supports (-ms-ime-align:auto) {
+    @include ratio-padding;
+  }
+
+  &.g-6{
+    @extend .g-6;
+  }
+  &.g-3{
+    @extend .g-3;
+  }
+  &.g-9{
+    @extend .g-9;
+  }
+  // Gal Link
+  &__link{
+    @include abs-fill;
+    padding: 0 $grid-col-pad;
+    color: #fff;
+    overflow:hidden;
+    @include link-styles(#fff, #fff)
+  }
+  // Bg Image
+  &__bg{
+    @include bg-img-abs();
+    opacity: 0.92;
+    transition: transform 5s, opacity 1s;
+    @include engine3d('transform');
+  }
+  // Content
+  &__content{
+    @include abs-flex-fill;
+
+    @media (min-width: $mq-med) and (max-width: $mq-xlarge) {
+      font-size: 85%;
+    }
+
+  }
+  // Sep
+  .sep-center{
+    width: 0;
+  }
+  // Pretitle
+  &__pretitle{
+    display: inline-block;
+    margin: 0 auto 1.5em;
+    @extend %font-links;
+  }
+  // Title
+  &__title{
+    @extend %font-title-light;
+    text-align: center;
+  }
+  // Subtitle
+  &__subtitle{
+    opacity: 0;
+    transform:translate3d(0,-3em,0);
+    transition: all 0.4s ease;
+  }
+  // Footer
+  &__footer{
+    position: absolute;
+    bottom: 0;
+    right: 2em;
+  }
+  //btn
+  .btn{
+    margin-top: 1.5em;
+  }
+}
+
+/*----------------------------------------------
+-gal-link / gal-mondialite modifers
+Link gallery blocks with titles
+-----------------------------------------------*/
+.gallery--links,
+.gallery--mondialite{
+
+  // Gal Link Opacity
+  .gal__bg{
+    opacity: 0.6;
+  }
+}
+// Gal Links Hover
+.gallery--links .gal:hover,
+.gallery--mondialite .gal:hover{
+  //background-color: #fff;
+  //transition: background-color 1.5s ease;
+
+  // Deal with Doubtap issue on ios
+  @media (min-width: $mq-med) {
+    .gal__bg{
+      opacity: 0.3;
+      transform: scale(1.2);
+      transition: transform 9s ease, opacity 1s ease;
+    }
+    .gal__content, .gal__header{
+      padding: $grid-col-pad;
+      transition: 1.4s $ease-cb;
+    }
+    .sep-center{
+      width: 4em;
+      transition: width 1.2s ease;
+    }
+    .gal__subtitle{
+      opacity: 1;
+      transform:translate3d(0,0,0);
+      transition: all 0.4s ease;
+    }
+  }
+}
+
+
+/*----------------------------------------------
+Add margin if used inside grid-wrap
+@see: scss/utils/_grid.scss
+-----------------------------------------------*/
+.gallery.grid-wrap{
+  margin-bottom: $pad-sm;
+}

@@ -1,0 +1,41 @@
+/*----------------------------------------------
+-Feed / Posts
+Used for related posts on blog and mondialite single templates.
+
+@see: partials/content/content-entries.php
+-----------------------------------------------*/
+.entries{
+  padding-bottom: $pad;
+}
+
+.entry{
+  border-bottom: 1px solid;
+  padding: 2em 0;
+  
+  &:last-child{
+    border-bottom: 0;
+  }
+  &__date{
+    display: block;
+    margin-bottom: 0.5em;
+    @extend %font-links;
+    font-size: $font-xxsmall;
+    color: $color-midgrey;
+  } 
+
+  &__title{
+    @extend %font-h5;
+
+    @media (min-width: $mq-med){
+      max-width: 60%;
+      display: inline-block;
+      vertical-align: middle;
+    }  
+  }
+  .btn{
+    @media (min-width: $mq-med){
+      float: right;
+      margin-right: -1.5em;
+    } 
+  }
+}

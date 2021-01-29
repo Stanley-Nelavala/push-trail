@@ -1,0 +1,39 @@
+//----------------------------------------------
+// Control - Close X
+// Created from the menu/burger styles
+//----------------------------------------------
+
+$close-x-size: 2em;
+
+.close-x{
+  z-index: 99;
+  position: relative;
+  display: block;
+  height: $close-x-size;
+  width: $close-x-size;
+  transform: rotate(0);
+  transition: transform 0.4s ease;
+
+  &:hover{
+    cursor: pointer;
+    transform: rotate(180deg);
+    transition: transform 0.4s ease;
+  }
+  &:after, &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    width: $close-x-size;
+    height: 1px;
+    display: block;
+    background: #fff !important;
+    transition: background-color 0.4s ease-in-out;
+  }
+  &:after{
+    transform: rotate(45deg);
+  }
+  &:before {
+    transform: rotate(-45deg);
+  }
+}

@@ -1,0 +1,131 @@
+/*----------------------------------------------
+--Preloading graphic/animation
+-----------------------------------------------*/
+.pagination {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+
+  a{
+    z-index: 5;
+    position: relative;
+    flex: 1;
+    display: block;
+    padding: 2em 0.5em;
+    text-align: center;
+
+    // Create Triangle
+    &:before{
+      z-index: 5;
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transition: border-color 0.2s ease-out;
+    }
+    // Pseudo bg for hover
+    &:after{
+      @include pseudo-content($color-black);
+
+      transition: transform 0.7s $ease-cb;
+    }
+  }
+
+  a:hover{
+    color: #fff;
+    // Change triangle color
+    &.pagination__link--previous:before{
+       border-color: transparent #fff transparent transparent;
+    }
+    // Change triangle color
+    &.pagination__link--next:before{
+       border-color:transparent transparent transparent #fff;
+    }
+    // transition psedu bg
+    &:after{
+      transform: translateX(0);
+      transition: transform 0.7s $ease-cb;
+    }
+  }
+
+  // Position Previous
+  &__link--previous{
+    border-right: 1px solid #ddd;
+
+    &:before{
+      left: 1em;
+      border-width: 6px 10px 6px 0;
+      border-color: transparent $color-black transparent transparent;
+      transition: border-color 0.2s ease-out;
+
+      .pagination--dark &{
+        $color-black: #fff;
+      }
+    }
+    &:after{
+      transform: translateX(-105%);
+    }
+  }
+  // Position Next
+  &__link--next{
+
+
+    &:before{
+      right: 1em;
+      border-width: 6px 0 6px 10px;
+      border-color: transparent transparent transparent $color-black;
+    }
+    &:after{
+      transform: translateX(105%);
+    }
+  }
+
+  &__title{
+    @extend %font-links;
+    font-size: $font-xsmall;
+  }
+  &__content{
+    position: relative;
+    z-index: 3;
+  }
+}
+
+.pagination--dark{
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  a{
+    @include link-styles(#fff, $color-black);
+    background-color: $color-black;
+
+    &:after{
+      @include pseudo-content(#fff);
+    }
+    &:hover{
+      color: $color-black !important;
+    }
+  }
+  .pagination__link--previous{
+    border-right: 1px solid #444;
+
+    &:before{
+      border-color: transparent #fff transparent transparent;
+    }
+    &:hover:before{
+      border-color: transparent $color-black transparent transparent !important;
+    }
+  }
+  .pagination__link--next{
+
+    &:before{
+      border-color: transparent transparent transparent #fff;
+    }
+    &:hover:before{
+      border-color: transparent transparent transparent $color-black !important;
+    }
+  }
+
+}

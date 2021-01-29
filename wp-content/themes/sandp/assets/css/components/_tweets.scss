@@ -1,0 +1,17 @@
+/*--------------------------------------------------- 
+Results Module
+
+The Results module is used on Portfolio entries to highlight final accomplishments.
+
+@see: partials/modules/results-module.php
+---------------------------------------------------  */
+.tweets{
+  display: flex;
+
+  .tweet{
+    @media (min-width: $mq-med){
+      felx-basis: 33.333%;
+      padding: 0 1em;
+    }
+  }
+}

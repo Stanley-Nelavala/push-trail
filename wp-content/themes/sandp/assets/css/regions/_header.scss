@@ -1,0 +1,233 @@
+//----------------------------------------------
+// Site Header + Nav
+//----------------------------------------------
+.site-header,
+.close-to-top .site-header {
+  z-index: $z-site-header;
+  position: fixed;
+  display: flex;
+  align-content: center;
+  width: 100%;
+  height: $header-height;
+  line-height: $header-height;
+  color: $color-white;
+  transition: all 0.75s ease;
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 93%;
+    margin: 0 auto;
+
+    @media (min-width: $mq-med){
+      max-width: 95%;
+    }
+  }
+}
+//----------------------------------------------
+// Logo
+//----------------------------------------------
+.site-header__logo {
+  flex-basis: 40%;
+  width: 40%;
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.7s ease;
+
+  @media (min-width: $mq-med){
+    justify-content: center;
+  }
+
+  &:hover{
+    opacity: 0.7;
+    transition: opacity 0.7s ease;
+  }
+
+  .logo-svg{
+    width: 5.5em;
+    max-width: 5.5em;
+    fill: #fff;
+  }
+}
+//----------------------------------------------
+// Site Header Nav
+//----------------------------------------------
+.site-header__nav {
+  display: none;
+  text-align: right;
+
+  @media (min-width: $mq-med) {
+    display: block;
+    flex-basis: 60%;
+  }
+
+   & > ul{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  & > ul > li > a{
+    @include nav-links(#fff);
+  }
+}
+
+//----------------------------------------------
+// Site Header: Scrolling Interaction
+//----------------------------------------------
+.scrolling-down{
+  .site-header{
+   animation: nav-up ease-in-out .3s .1s both;
+  }
+}
+.scrolling-up{
+  .site-header{
+    animation: nav-down ease-in-out .25s 0s both;
+  }
+}
+
+.scrolling-up, .scrolling-down{
+
+  .logo-svg{
+    width: 6em;
+    //fill: $color-cream;
+    fill: $color-midgrey;
+    transition: all 0.4s 0.4s ease;
+  }
+  .site-header{
+    background: #fff;
+    box-shadow: 0 1px 1px rgba($color-dark, .1);
+
+    nav a{
+      @include link-styles($color-midgrey, $color-black);
+    }
+
+    a:after, a.active:after, {
+      background-color: currentColor
+    }
+  }
+  .site-header__menu-bars, .site-header__menu-bars:after, .site-header__menu-bars:before {
+    background-color: $color-midgrey;
+  }
+}
+//----------------------------------------------
+// Nav Up & Down keyframes
+//----------------------------------------------
+@keyframes nav-down {
+  0%   { transform: translate3d(0,-$header-height,0); }
+  100% { transform: translateed(0,0,0); }
+}
+@keyframes nav-up {
+  0%   { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(0,-$header-height,0); }
+}
+
+//----------------------------------------------
+// Site Header Menu Link
+//----------------------------------------------
+.site-header__menu-toggle{
+  position:fixed;
+  z-index:991;
+  height: 3rem;
+  width: 3rem;
+  top:1em;
+  right: 0.5em;
+
+  @media (min-width:$mq-med){
+    display: none;
+  }
+}
+
+//----------------------------------------------
+// Menu Bars
+//----------------------------------------------
+.site-header__menu-bars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width:2.5rem;
+  height: 1px;
+  margin: 0.75em auto;
+  background: #fff;
+  transition: background 0.4s ease-in-out;
+
+  //Menu Bars top and bottom
+  &:before {
+    top: -7px;
+  }
+
+  &:after {
+    top: 7px;
+  }
+
+  &:after, &:before {
+    z-index: $z-lowest;
+    content: '';
+    position: absolute;
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: #fff;
+    transition: all 0.4s ease-in-out;
+  }
+
+  &:hover{
+    cursor:pointer;
+  }
+}
+
+//----------------------------------------------
+// Open Menu Interaction
+//----------------------------------------------
+.js-menu--is-open{
+
+  .site-header{
+    box-shadow: none;
+  }
+  svg.logo-svg path{
+    fill: $color-midgrey;
+    transition: all 0.4s ease;
+  }
+
+  //Menu Bars
+  .site-header__menu-bars {
+    background: rgba(0,0,0,0) !important;
+    transition: background 0.4s ease;
+
+    &:after, &:before {
+      top: 0 !important;
+      background: $color-midgrey;
+      zoom: 1;
+    }
+
+    &:after{
+      transform: rotate(45deg);
+    }
+
+    &:before {
+      transform: rotate(-45deg);
+    }
+  }
+  //Logo svg
+  .site-header__logo .svg{
+    will-change: transform;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+  }
+}
+
+//----------------------------------------------
+// Menu Bars - Scrolling Down interaction
+//----------------------------------------------
+.scrolling-down{
+  .site-header__menu-bars,
+  .site-header__menu-bars:before,
+  .site-header__menu-bars:after{
+    background-color: $color-grey;
+  }
+}

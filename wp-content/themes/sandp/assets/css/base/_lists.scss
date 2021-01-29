@@ -1,0 +1,82 @@
+/*--------------------------------------------------- 
+Lists
+---------------------------------------------------  */
+ul, .list-unstyled {
+  @include unstyled-list;
+}
+
+.list-vert {
+  @extend .list-unstyled;
+
+  li {
+    display: inline-block;
+  }
+}
+
+ol li{
+  padding-bottom:.5em
+}
+
+
+/*--------------------------------------------------- 
+List Cols
+---------------------------------------------------  */
+.list-cols{
+  text-align:left;
+  @media (min-width: $mq-med){
+    columns: 2;
+    column-count: 2;
+    column-gap: 3em;
+  }
+
+  li{
+    text-align:left;
+    padding-bottom: 1em;
+    line-height: 1.4;
+    page-break-inside: avoid;
+  }
+}
+
+
+/*--------------------------------------------------- 
+Post Content Lists
+---------------------------------------------------  */
+.content{
+
+  // Unordered Lists
+  ul{
+    margin-left: 1.2em;
+    list-style-type: disc;
+    margin-left: 1em;
+
+    & > li{
+      margin: 0.5em 0;
+      font-size: 0.95em;
+    }
+  }
+
+  //Ordered Lists
+  ol{
+    counter-reset: li;
+    margin-left: 1.2em;
+  }
+
+  ol > li {
+    position: relative;
+    list-style: none;
+    margin: 0.5em 0;
+    font-size: 0.95em; 
+  }
+
+  ol > li:before {
+    content: counter(li) ".";
+    counter-increment: li;
+    position:absolute;
+    left: -1.2em;
+    top: -2px;
+    width: 1em;
+    font-family: $font-header;
+    font-weight: 600;
+    color: $color-midgrey;
+  }
+}

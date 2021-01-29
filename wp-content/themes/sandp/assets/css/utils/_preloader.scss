@@ -1,0 +1,69 @@
+/*----------------------------------------------
+--Preloading graphic/animation
+-----------------------------------------------*/
+.preloader {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  left: 0;
+  width: 4em;
+  height: 4em;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-top-color: rgba(0,0,0,1);
+  border-radius: 50%;
+  animation: spin 1s linear infinite both;
+  opacity: 1;
+  transition: opacity 2s 1s ease-out;
+}
+
+
+
+.preloader-bounce{
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4em;
+    height: 4em;
+    background-color: $color-grey;
+    border-radius: 50%;
+    opacity: .6;
+    animation: preloader-bounce 2s infinite ease;
+  }
+  &:after {
+    animation-delay: -1s;
+  }
+}
+
+/*----------------------------------------------
+-Has Preloader Blocks
+@description: blocks will generally consist of a 
+              figure tag with the image and preloader nested inside
+-----------------------------------------------*/
+.has-preloader{
+  //min-height: 17em;
+
+  & > img{
+    opacity: 0;
+  }
+
+  // Boom - We're loaded.
+  &.is-loaded{
+    
+    .preloader{
+      //animation: spin-out 2s linear forwards;
+      opacity: 0;
+      //transition: opacity 2s 5s ease-out;
+
+    }
+    & > img{
+      opacity: 1;
+      transition: opacity 1.5s 0.5s ease-in, transform 10s;
+    }
+  }
+}
+
+

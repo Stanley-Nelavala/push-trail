@@ -1,0 +1,33 @@
+/*--------------------------------------------------- 
+Text Slider
+Styles for the Text Slider Module
+@see: components/text-slider-module.php
+@see: slick.js
+---------------------------------------------------  */
+.text-slider{
+  text-align: center;
+
+  @media (min-width: $mq-med){
+    text-align: left;
+  }
+
+  &__title{
+    margin-bottom: 1em;
+    @media (min-width: $mq-med){
+      padding-right: 1em;
+      margin-bottom: 0;
+    }
+  }
+
+  .grid{
+    width: 70%;
+
+    @media (min-width: $mq-med){
+      width: 80%;
+    }
+  }
+
+  .slick-dots{
+    bottom: -4em;
+  }
+}

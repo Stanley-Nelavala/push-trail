@@ -1,0 +1,24 @@
+/*----------------------------------------------   
+SECTIONS
+Styles for all purpose section elements. 
+-----------------------------------------------  */
+section {
+  position:relative;
+}
+
+/*----------------------------------------------   
+-basic section class
+-----------------------------------------------  */
+.section{
+  padding: $pad 0;
+
+  h2, h3, h4{
+    @extend %font-title-light;
+  }
+
+  .grid__col{
+    @media(min-width: $mq-med){
+      padding: 0 4%;
+    }
+  }
+}

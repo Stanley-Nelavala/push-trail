@@ -1,0 +1,139 @@
+
+.sticky-nav-wrap{   
+  height: 4em !important;
+  line-height: 2em;
+  @media(min-width: $mq-med){
+    //height: 5em !important;
+  }
+}
+
+
+/*--------------------------------------------------- 
+subnav
+---------------------------------------------------  */
+.sticky-nav{
+  z-index: $z-higher;
+  width: 100%;
+  padding: 0.75em 0;
+  text-align: center;
+}
+
+/*----------------------------------------------
+Filters - Sticky
+-----------------------------------------------*/
+.sticky-nav.is-sticky{
+  @media (min-width: $mq-xlarge){
+    position: fixed;
+    top: $header-height;
+    left: 0;
+  }
+}
+
+.js-menu--is-open .sticky-nav{
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/*--------------------------------------------------- 
+Sticky-nav: Page Nav
+---------------------------------------------------  */
+.filter{
+  @extend %font-links;
+
+  &__val{
+    color: $color-midgrey;
+    border-bottom: 1px solid;
+
+    &:hover{
+      color: $color-black;
+    }
+  }
+}
+
+
+
+/*--------------------------------------------------- 
+Sticky-nav: Page Nav
+---------------------------------------------------  */
+.sticky-nav--page{
+  background-color: $color-lightgrey;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+  
+  nav ul{
+    display: flex;
+    justify-content: space-around;
+    max-width: 95%;
+    margin: 0 auto;
+    @media (min-width: $mq-med){
+      max-width:  74%;
+    }
+  }
+  
+  nav a{
+    @extend %font-links;
+    font-size: $font-xxxsmall;
+  }
+}
+/*----------------------------------------------
+Overflow-X scrolling on mobile
+-----------------------------------------------*/
+@media (max-width:$mq-small){
+  .sticky-nav--page, .sticky-nav--legend{
+    max-height: 3.2em;
+    overflow: hidden;
+    padding: 0.5em 0;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: -1em;
+      top: -6px;
+      width: 1.5em;
+      height: calc(100% + 10px);
+      background: rgba($color-lightgrey, 0.8);
+      filter: blur(4px);
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -6px;
+      width: 1.2em;
+      height: calc(100% + 10px);
+      background: rgba($color-lightgrey, 0.8);
+      filter: blur(4px);
+    }
+   
+    nav{
+      height: 10em;
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+
+      &::-webkit-scrollbar-thumb{
+        background-color: transparent;
+      }
+      &::-webkit-scrollbar{
+        -webkit-appearance: none;
+        width: 0.1px;
+        height: 0.1px;
+        background: transparent;
+      } 
+    }
+    ul{
+      width: 40em;
+      min-width: 40em;
+      max-width: 50em;
+      padding: 0 1.75em 0 0.75em;
+      text-align: justify;
+    }
+  }
+}
+
+.sticky-nav--legend:before,
+.sticky-nav--legend:after{
+      background: rgba($color-darkgrey, 0.8);
+    }

@@ -1,0 +1,140 @@
+// ----------------------------------------------
+// CONFIG / SETTINGS
+// Global Vars
+// 01 - Type
+// 02 - Paddings
+// 03 - grid
+// 04 - Media Queries
+// 05 - Colors
+// 06 - Misc
+//-----------------------------------------------
+
+// ----------------------------------------------
+// Fonts
+//-----------------------------------------------
+$font-header: gotham, "Helvetica Neue", sans-serif;
+$font-paragraph: "gotham narrow", Georgia, serif;
+
+// ----------------------------------------------
+// Line Height
+//-----------------------------------------------
+$base-lineheight: 1.9;
+
+// ----------------------------------------------
+// Font Size vars
+//-----------------------------------------------
+$font-scale-up: 0.2em;
+$font-mast-h1: 1.8em;
+$font-h1: 1.9em;
+$font-h2: 1.6em;
+$font-h3: 1.4em;
+$font-h4: 1.05em;
+$font-h5: 1em;
+
+$font-small: 0.85em;
+$font-xsmall: 0.7em;
+$font-xxsmall: 0.6em;
+$font-xxxsmall: 0.5em;
+
+// -----------------------------`-----------------
+// Paddings
+//-----------------------------------------------
+$pad-xl:  8em;
+$pad-lg:  7em;
+$pad:     5em;
+$pad-med: 3em;
+$pad-sm:  2em;
+
+// ----------------------------------------------
+// Grid
+//-----------------------------------------------
+//$grid-max-width: 67em;
+$grid-cols: 12;
+// Grid col sizes
+$grid-col: 100% / $grid-cols;
+// Grid col pad
+$grid-col-pad: 2%;
+$grid-gutter: 2%;
+$grid-max-width-sm: 42em;
+$grid-max-width: 62em; 
+$grid-max-width-lg: 85%;
+$grid-max-width-xl: 95%;
+$grid-width: 95%;
+
+/*----------------------------------------------
+--Media Queries (min-widths)
+-----------------------------------------------*/
+//Smallest phone
+$mq-xsmall: 22em;
+//phone
+$mq-small: 32em;
+//Tablet
+$mq-med: 54em;
+//laptop
+$mq-large: 65em;
+//Past laptop
+$mq-xlarge: 91em;
+//Mid Size monitor
+$mq-xxlarge: 115em;
+//Thunderbold goes to 157em
+$mq-xxxlarge: 130em;
+
+/*----------------------------------------------
+--Colors
+-----------------------------------------------*/
+$color-alpha:     #C43A31;
+$color-beta:      #003a49;
+
+$color-white:     #fff;
+$color-light:     rgba(255,255,255,0.8);
+$color-dark:      rgba(0,0,0,0.8);
+$color-cream:     #e2dfd5;
+$color-lightgrey: #f8f6f7;
+$color-softgrey:  #eceae6;
+$color-grey:      #323232;
+$color-midgrey:   #bbb;
+$color-darkgrey:  #242121;
+$color-black:      #111;
+
+$color-alert:     #c43a31;
+$color-success:   #1ABC9C;
+
+
+//----------------------------------------------
+// Base UI
+//----------------------------------------------
+$base-borderradius: 0px;
+$base-border-width: 1px;
+
+/*----------------------------------------------
+--Header-specific vars
+-----------------------------------------------*/
+$header-height: 4em;
+
+//----------------------------------------------
+// Forms
+//----------------------------------------------
+$form-borderwidth: 1px;
+$form-placeholdercolor: $color-darkgrey;
+$form-bordercolor: $color-grey;
+
+//----------------------------------------------
+// Z-Indexs
+//----------------------------------------------
+$z-overlays: 99;
+$z-site-header: 92;
+$z-site-menu: 91;
+$z-higher: 8;
+$z-high: 7;
+$z-mid: 5;
+$z-low: 2;
+$z-lower: 1;
+$z-base: 0;
+$z-lowest: -1;
+
+//----------------------------------------------
+// easing
+//----------------------------------------------
+$ease-cb: cubic-bezier(.77,0,.175,1);
+$ease-cb2: cubic-bezier(.19,1,.22,1);
+$ease-cb3: cubic-bezier(.4,0,.2,1);

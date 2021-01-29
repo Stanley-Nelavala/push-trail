@@ -1,0 +1,180 @@
+//---------------------------------------------- 
+//  link-styles()
+//  @description: Transition Delay on nth-childs
+//  @param: $mainColor: [$color-darkgrey] - initial color
+//  @param: $hoverColor:[$color-alpha]    - hover color
+//----------------------------------------------
+@mixin link-styles($main_color: $color-darkgrey, $hover_color: $color-alpha){
+ color: $main_color;
+ text-decoration: none; 
+ line-height:inherit;
+ transition: color 0.4s ease-in-out;
+
+ &:hover, &:focus{
+  color: $hover_color;
+  transition: color 0.4s ease-in-out;
+ }
+ &:active{
+  color: darken($hover_color, 25);
+ }
+}
+
+//----------------------------------------------  
+//  link-line($color-alpha, $color-grey, $color-dark)
+//
+//  @description: link styles with an underline that animates in on hover.
+//  @param: $color = main color;
+//  @param: $line_color = the color of the line below link, before hover
+//  @param: $hover_color = color of hover, link and line.
+//----------------------------------------------
+@mixin link-lines($color: $color-alpha, $line_color: #ddd, $hover_color: $color-black){
+ position: relative;
+ display: inline-block;
+ vertical-align: bottom;
+ color: $color; 
+ text-decoration: none; 
+ line-height:inherit;
+ transition: color 0.4s ease-in-out;
+ overflow-x:hidden; 
+
+ &:before{
+  content: '';
+  position: absolute;
+  background-color:$line_color;
+  left:0;
+  bottom: 5px;
+  margin: 0 auto;
+  width: 100%;
+  height: 1px;
+  transform:translateX(0%);
+ }
+ &:after{
+  content: '';
+  position: absolute;
+  background-color: $hover_color;
+  left:0;
+  bottom: 5px;
+  margin: 0 auto;
+  width: 100%;
+  height: 1px;
+  transform:translateX(-110%);
+  transition: transform 0.6s ease-in-out, color 0.6s ease-in-out;;
+ }
+ &:hover, &:focus{
+  cursor: pointer;
+  color: $hover_color;
+  transition: color 0.4s ease-in-out;
+ }
+ &:hover:after{
+  transform: translateX(0);
+  transition: transform 0.6s $ease-cb2, color 0.6s $ease-cb2;
+ }
+ &:active{
+  color: darken($hover_color, 25);
+ }
+}
+
+//----------------------------------------------  
+// link-line();
+//  @description: link styles with animated underline
+//----------------------------------------------
+@mixin link-line($color, $hover_color){
+  position:relative;
+  display:inline-block;
+  vertical-align: middle;
+  padding: 0;
+  color: $color;
+  overflow-x:hidden; 
+  
+  &:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $base-border-width;
+    background-color: $color;
+    transform: translate3d(-108%,0,0);
+    opacity: 0;
+    transition: opacity 0.7s ease, transform 0.4s $ease-cb3;
+  }
+  &:hover{
+    color: $hover_color;
+  }
+  &:hover:after{
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: opacity 0.1s ease, transform 0.4s $ease-cb3;
+  }
+}
+
+
+//----------------------------------------------  
+// link-line();
+//  @description: link styles with animated underline
+//----------------------------------------------
+@mixin nav-links($color:#fff){
+  position: relative;
+  padding: 0.4em 0;
+  @extend %font-links;
+  font-size: $font-xxsmall;
+  @include link-styles($color, $color);
+
+  &:after{
+    content: '';
+    position: absolute;
+    bottom: -0.5em;
+    left: 0;
+    width: 1.5em;
+    height: 1.5px;
+    background-color: $color;
+    transform: translateX(-108%);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.4s $ease-cb;
+  }
+  &.is-active:after, &:hover:after{
+      transform: translateX(0);
+      opacity: 1;
+      transition: opacity 0.6s ease, transform 0.4s $ease-cb;
+  }
+}
+//----------------------------------------------
+//  word-break()
+//  @description: Solution for one word per line. We need
+//  to apply within @media, so couldn't just be an extend.
+//----------------------------------------------
+@mixin word-break(){
+  word-spacing: 9999px;
+}
+
+//----------------------------------------------
+//  font-rwd
+//  @description: Change font-size across breaks 
+//  @param: $font_sm  - at small
+//  @param: $font_med - at med break
+//  @param: $font_lg  - at Large break
+//  @param: $font_xl  - at Xlarge break  
+//----------------------------------------------
+@mixin font-rwd($font_sm, $font_med, $font_lg, $font_xl) {
+  font-size: $fontSm;
+ 
+  @media (min-width: $mq-med) {
+    font-size: $font_med;
+  } 
+  @media (min-width: $mq-large) {
+    font-size: $font_lg;
+  }
+  @media (min-width: $mq-xlarge) {
+    font-size: $font_xl;
+  }  
+}
+
+//----------------------------------------------
+//  unstyled-list
+//  @description: creates an unstyled list
+//----------------------------------------------
+@mixin unstyled-list {
+  margin: 0 auto;
+  padding-left: 0;
+  list-style-type: none;
+}

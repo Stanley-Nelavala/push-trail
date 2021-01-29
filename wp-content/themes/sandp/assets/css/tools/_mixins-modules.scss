@@ -1,0 +1,192 @@
+//----------------------------------------------
+//  MODULE MIXINS
+//  Positioning
+//  Backgrounds
+//  Sections (mast)
+//----------------------------------------------
+
+//----------------------------------------------
+//  Microclearfix
+//----------------------------------------------
+@mixin cf {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+
+//----------------------------------------------
+//  abs-center()
+//  @description: absolutely centers and element
+//----------------------------------------------
+@mixin trans-center{
+  position: relative;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+@mixin abs-trans-center{
+  position: absolute;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%, 0);
+  -webkit-font-smoothing: antialiased;
+  -backface-visibility: hidden;
+}
+
+
+//----------------------------------------------
+//  abs-fill()
+//  @description: fills a block with absolute positioning.
+//----------------------------------------------
+@mixin abs-fill{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+//----------------------------------------------
+//  abs-flex-fill()
+//  @description: fills a block with absolute positioning, centers child content with flex.
+//----------------------------------------------
+@mixin abs-flex-fill{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+//----------------------------------------------
+//  abs-center()
+//  @description: absolutely centers and element
+//----------------------------------------------
+@mixin abs-center{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align:center;
+}
+
+//----------------------------------------------
+//  abs-center-bottom()
+//  @description: align item center-bottom via abs
+//----------------------------------------------
+@mixin abs-center-bottom{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  text-align:center;
+}
+
+//----------------------------------------------
+//  trans-center()
+//  @description: vert & horz centering via transform
+//----------------------------------------------
+@mixin center-vh{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+//----------------------------------------------
+//  bg-img()
+//  @description: common bg image treatment
+//----------------------------------------------
+@mixin bg-img-cover {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+//----------------------------------------------
+//  bg-img-abs()
+//  @description: Absolutely positioned bg element
+//----------------------------------------------
+@mixin bg-img-abs {
+  z-index: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow:hidden;
+  @include bg-img-cover();
+}
+
+//----------------------------------------------
+//  bg-overlay()
+//  @description:pseduo overlay element  
+//  @param: $bg_hex: [$color-dark] - hex value for rgba conversion
+//  @param: $bg_opacity:[0.6] - alpha transparency level
+//  @param: $top_layer: element or class name for higher z-index layer
+//----------------------------------------------
+@mixin bg-overlay($bg: rgba(0,0,0,0.5), $opacity: 0.6) {
+  &:after {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: $bg;
+    opacity: $opacity;
+    transition: 0.5s;
+  }
+  
+  // Layer atop overlay
+  & > *{
+    z-index: 2;
+    position: relative;
+  }
+}
+
+
+//----------------------------------------------
+//  Aspect Ratio
+//  For preloading images to maintain height and as
+//  during fade-in animation. 
+//  @param $width natural width of image
+//  @param $height natual height of image
+//----------------------------------------------
+@mixin aspect_ratio($width, $height) {
+  padding-bottom: ($height / $width) * 100%;
+  position: relative;
+  height: 0;
+
+  & > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+
+@mixin pseudo-content($bg){
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $bg;
+}

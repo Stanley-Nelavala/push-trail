@@ -1,0 +1,181 @@
+//----------------------------------------------   
+//  Global Font Styles
+//  @description: create extendable and global font/header styles
+//                _base/typography.scss handles header sizings and setup.
+//                You create titles and subtitles here.
+//----------------------------------------------- 
+
+/*----------------------------------------------   
+--H1 Mast Theme
+-----------------------------------------------  */
+%font-mast-h1 {
+  font-size: $font-mast-h1; 
+  @extend %font-title-xlight; 
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $font-mast-h1 + $font-scale-up;
+  }
+}
+
+/*----------------------------------------------   
+--H1 Theme
+-----------------------------------------------  */
+%font-h1 {
+  font-size: $font-h1; 
+  @extend %font-title-xlight; 
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $font-h1 + $font-scale-up;
+  }
+}
+
+/*----------------------------------------------
+--H2 Theme
+-----------------------------------------------*/
+%font-h2 {
+  font-size: $font-h2;  
+  @extend %font-title-light; 
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $font-h2 + $font-scale-up;
+  }
+}
+
+/*----------------------------------------------
+--H3 Theme
+-----------------------------------------------*/
+%font-h3 {
+  font-size: $font-h3;  
+  @extend %font-title-light;
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $font-h3 + $font-scale-up;
+  }
+}
+/*----------------------------------------------
+--H4 Theme
+-----------------------------------------------*/
+%font-h4 {
+  font-size: $font-h4;  
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  @media (min-width: $mq-xlarge) {
+   font-size: $font-h4 + $font-scale-up;
+  }
+}
+
+/*----------------------------------------------   
+--H5 Theme
+-----------------------------------------------  */
+%font-h5 {
+  @extend %font-uppercase;
+  margin-bottom: .4em;
+  font-size: $font-h5;  
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+
+%font-uppercase{
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+%font-links{
+  font-family: $font-header;
+  font-size: $font-xsmall;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+%font-links-small{
+  font-family: $font-header;
+  font-size: $font-xxxsmall;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+
+
+%font-title-xlight{
+  font-family: $font-header;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+}
+
+%font-title-light{
+  font-family: $font-header;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+}
+
+%font-block-title{
+  font-family: $font-header;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.125em;
+}
+
+%font-title{
+  text-transform: uppercase;
+  font-family: $font-header;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+%font-subtitle{
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  //font-size: $font-xsmall;
+}
+
+%font-subtitle-large{
+  font-family: $font-paragraph;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+}
+
+
+
+//----------------------------------------------
+//  Example: Styles for BEM elements
+//----------------------------------------------
+//  [class*='__subtitle']{
+//    @extend %font-subtitle;
+//  }
+
+//----------------------------------------------
+//  Unstyled list
+//----------------------------------------------
+%list-unstyled {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+//----------------------------------------------
+//  Inline Lists
+//----------------------------------------------
+%list-inline{
+
+  ul{
+    list-style: none;
+    display: block;
+
+    li{
+      margin-right:  1em;
+      display: inline-block;
+    }
+  }
+}

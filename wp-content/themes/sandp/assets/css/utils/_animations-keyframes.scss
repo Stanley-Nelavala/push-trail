@@ -1,0 +1,257 @@
+/*----------------------------------------------
+--Fade In
+-----------------------------------------------*/
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/*----------------------------------------------
+--Fade In partially 70%
+-----------------------------------------------*/
+@keyframes fade-in-mast {
+  0%   { opacity: 0; }
+  100% { opacity: 0.6; }
+}
+
+/*----------------------------------------------
+--Fade Out
+-----------------------------------------------*/
+@keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/*----------------------------------------------
+--Fade Up
+-----------------------------------------------*/
+@keyframes fade-up {
+  0%   { transform: translate3d(0,100%,0); opacity: 0}
+  100% { transform: translate3d(0,0,0); opacity: 1}
+}
+
+/*----------------------------------------------
+--Fade Down
+-----------------------------------------------*/
+@keyframes fade-down {
+  0%   { transform: translateY(-150px); }
+  100% { transform: translateY(0px); }
+}
+
+/*----------------------------------------------
+--Fade In Left
+-----------------------------------------------*/
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-150px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/*----------------------------------------------
+--Fade In Right
+-----------------------------------------------*/
+@keyframes fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(150px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/*----------------------------------------------
+--Slide Up
+-----------------------------------------------*/
+@keyframes slide-up{
+  from {
+    transform: translate3d(0,100%,0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+}
+/*----------------------------------------------
+--Slide In Left
+-----------------------------------------------*/
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/*----------------------------------------------
+--Slide In right
+-----------------------------------------------*/
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*----------------------------------------------
+--Slide In right
+-----------------------------------------------*/
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-out {
+  to {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+}
+/*----------------------------------------------
+--Scale
+-----------------------------------------------*/
+@keyframes scale-in {
+  0%   { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/*----------------------------------------------
+--Zoom
+-----------------------------------------------*/
+@keyframes zoom-in {
+  0%   { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.4) rotate(3.2deg); }
+}
+
+/*----------------------------------------------
+--Fade in BG Color
+-----------------------------------------------*/
+@keyframes bg-in{
+  0%{
+    background-color: transparent;
+  }
+  100%{
+    background-color: $color-dark;
+  }
+}
+
+/*----------------------------------------------   
+--Animate Width
+-----------------------------------------------  */
+@keyframes animate-width {
+  from{
+    width: 0;
+  }
+  to{
+    width: 100%;
+  }
+}
+
+/*----------------------------------------------   
+--Animate Height
+-----------------------------------------------  */
+@keyframes animate-height {
+  from{
+    height: 0;
+  }
+  to{
+    height: 100%;
+  }
+}
+
+/*----------------------------------------------
+-Letter Glow
+-----------------------------------------------*/
+@keyframes letter-glow{
+  0%   { opacity: 0; text-shadow: 0px 0px 1px rgba(255,255,255,0.1)}
+  66%  { opacity: 0.7; text-shadow: 0px 0px 20px rgba(255,255,255,0.9) }
+  77%   { opacity: 1;  }
+  100% { opacity:0.7; text-shadow: 0px 0px 20px rgba(255,255,255,0.0)}
+}
+
+
+/*----------------------------------------------
+-Letter Fadein
+-----------------------------------------------*/
+@keyframes letter-fade-in{
+  0%   { opacity: 0; text-shadow: 0px 0px 1px rgba(255,255,255,0.1)}
+  66%  { opacity: 0.6; text-shadow: 0px 0px 10px rgba(255,255,255,0.2) }
+  77%  { opacity: 1;  }
+  100% { opacity:1; text-shadow: 0px 0px 20px rgba(255,255,255,0.0)}
+}
+/*----------------------------------------------
+-Letter Fadein
+-----------------------------------------------*/
+@keyframes letter-fade-in-load{
+  0%   { opacity: 0; text-shadow: 0px 0px 1px rgba(255,255,255,0.1)}
+  66%  { opacity: 0.4; text-shadow: 0px 0px 20px rgba(255,255,255,0.2) }
+  77%  { opacity: 1;  }
+  100% { opacity:1; text-shadow: 0px 0px 20px rgba(255,255,255,0.0)}
+}
+/*----------------------------------------------
+-Letter Fadein
+-----------------------------------------------*/
+@keyframes letter-slide-in{
+  0%   { opacity: 0; top: -0.5em}
+  100%  { opacity: 1; top: 0 }
+}
+
+/*----------------------------------------------
+-Preloader Bounce
+-----------------------------------------------*/
+@keyframes preloader-bounce {
+  0%, 100% {
+    transform: scale(1.4) rotate(3.2deg);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+}
+
+
+/*----------------------------------------------   
+--Animation Helpers
+-----------------------------------------------  */
+.fade-in {
+  animation: fade-in ease-in-out 1s both;
+}
+.fade-in-page {
+  animation: fade-in ease 1.5s forwards;
+}
+.fade-right {
+  animation: fade-right ease-in-out 1s .1s both;
+}
+.fade-left {
+  animation: fade-left ease-in-out 1s .1s both;
+}
+.fade-down {
+  animation: fade-down ease-in-out 1s .4s both;
+}
+.fade-up {
+  animation: fade-up ease-in-out 1s .4s both;
+}
+
+
+/*----------------------------------------------   
+--Animation Helpers
+-----------------------------------------------  */
+a:hover .js-letters span{
+  will-change: opacity;
+  //animation: letter-glow 3s 0s cubic-bezier(.25,.1,.25,1) both;
+  animation: letter-fade-in 0.7s 0s ease both;
+  @include nth-ani-delay(60, 0.04s);
+}
+
+

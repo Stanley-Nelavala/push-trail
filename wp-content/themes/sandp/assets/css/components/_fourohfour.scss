@@ -1,0 +1,28 @@
+.mast.mast--fourohfour{
+  height: 100vh;
+
+  .mast__title{
+    font-size: 4em;
+    margin-bottom: 0.1em;
+
+    @media (min-width: $mq-med){
+      font-size: 5em;
+    }
+  }
+
+  .mast__text{
+    font-size: 105%;
+    margin-bottom: 1em;
+    animation: fade-in 1.5s 2s ease both;
+  }
+
+  .btn-link{
+    animation: fade-in 1.5s 2.5s ease both;
+  }
+}
+
+.error404{
+  .site-footer{
+    display: none;
+  }
+}

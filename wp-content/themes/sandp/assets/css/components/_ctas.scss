@@ -1,0 +1,60 @@
+/*----------------------------------------------
+CTAs
+CTA div links
+-----------------------------------------------*/
+.cta{
+  width: 100%;
+  text-align: center;
+  font-family: $font-header;
+
+  &__link, &__link:focus, &__link:active{
+    display: block;
+    padding: 2em;
+    color: #fff;
+    background-color: $color-dark;
+    transition: background-color 0.75s $ease-cb3;
+  }
+  
+  &__text{
+    @extend %font-h3;
+    margin: 0 auto;
+
+    span{
+      //@extend %font-subtitle;
+    }
+  }
+
+  &__link:hover{
+    color: #fff;
+    background-color: $color-black;
+    transition: background-color 0.75s $ease-cb3;
+  }
+}
+/*----------------------------------------------
+-CTA--Alpha
+-----------------------------------------------*/
+.cta--white{
+
+  .cta__link{
+    background-color: #fff;
+    color: $color-dark;
+
+    &:hover{
+      background-color: $color-lightgrey;
+
+    }
+  }
+}
+
+.cta--lightgrey{
+
+  .cta__link{
+    background-color: $color-lightgrey;
+    color: $color-dark;
+
+    &:hover{
+      background-color: $color-lightgrey;
+
+    }
+  }
+}

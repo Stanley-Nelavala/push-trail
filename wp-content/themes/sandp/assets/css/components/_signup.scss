@@ -1,0 +1,253 @@
+//----------------------------------------------
+//  Signup
+//  MC signup ajax/json + interactions
+//
+//  @see: kit/assets/js/components/_signup.js
+//  @see: partials/modules/signup-module.php
+//-----------------------------------------------
+$signup-success-time: 8s;
+
+.signup-form{
+
+  &__input{
+    @extend .field--minimal;
+    margin-bottom: 0.75em;
+  }
+
+  &__btn{
+    display: inherit;
+    margin: 1em 0;
+  }
+
+  .error{
+    background-color: #ffeded;
+    border-bottom: 1px solid $color-alert !important;
+
+    &::placeholder{
+      position: relative;
+      letter-spacing: 0px;
+      color: $color-alpha;
+    }
+    &::-webkit-input-placeholder {
+      color: $color-alert;
+    }
+
+    &:-moz-placeholder {
+      color: $color-alert;
+    }
+
+    &::-moz-placeholder {
+      color: $color-alert;
+    }
+
+    &:-ms-input-placeholder {
+      color: $color-alert;
+    }
+  }
+}
+
+
+.signup__check {
+  display: flex;
+  text-align: left;
+  margin: 1.25em 0 1em;
+
+  &-input {
+    appearance: checkbox !important;
+    -webkit-appearance: checkbox !important;
+    border: 1px solid #111;
+    padding: 0;
+    width: 3em;
+  }
+
+  &-label {
+    font-size: 0.625em;
+    line-height: 1.3;
+    color: #111;
+    text-align: left;
+  }
+}
+
+.signup__terms {
+  display: block;
+  margin: 0.5em 0;
+  font-size: 0.5em;
+  line-height: 1.5;
+  text-align: left;
+  color: #999;
+}
+//----------------------------------------------
+//  Signup Button
+//  Since this is really the only instance of this style
+//  of button, we're just styling it here instead of buttons.scss
+//  @group: signup
+//-----------------------------------------------
+
+.btn-signup{
+  display: block;
+  margin: 1.75em 0 1em;
+  padding: 0.5em 1.5em;
+  font-weight: 500;
+  border: 1px solid $color-dark !important;
+  color: #fff;
+  background-color: $color-dark;
+
+
+  &:hover{
+    color: $color-dark;
+    background-color: rgba(#fff,0);
+  }
+}
+
+
+//----------------------------------------------
+//  Signup
+//
+//  @group: signup
+//-----------------------------------------------
+.signup-notice{
+  z-index: -1;
+  opacity: 0;
+  position: fixed;
+  top:  0;
+  bottom: 0;
+  left: 0;
+  right:  0;
+  height: 0;
+  max-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5%;
+  color: #fff;
+  background-color: rgba($color-dark, 0.8);
+  text-align: center;
+
+
+  &__message{
+    opacity: 0;
+    text-align:center;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 33em;
+    transition: opacity 1s ease;
+
+    .signup--error & a {
+      display: none;
+    }
+  }
+
+  // Signup Success transition
+  .signup--success &{
+    z-index: 999;
+    opacity: 1;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100%;
+    background-color: rgba($color-dark, 0.8);
+    transition: opacity 0.1s ease, z-index 0.1s ease;
+    animation: signup-success $signup-success-time  ease both;
+
+  }
+
+  // Signup Error transition
+  .signup--error &{
+    z-index: 999;
+    opacity: 1;
+    height: 5em;
+    max-height: 5em;
+    background: $color-alpha;
+    will-change: opacity;
+
+    transition: opacity 0.5s 0.1s ease, z-index 0.1s ease, max-height 0.5s ease;
+  }
+
+  // Signup Error to Success transition
+  .signup--error.signup--success &{
+    height: 100vh;
+    max-height: 100vh;
+    background-color: rgba($color-dark, 0.8);
+    transition: max-height 1s ease, background-color 1s;
+    animation: fade-out 3s 4s ease both;
+  }
+
+  .signup--error & span,
+  .signup--success & span{
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+  .signup--fade-out &{
+      animation: signup-exit 1s 4s ease both;
+  }
+}
+
+@keyframes signup-exit{
+  to{
+    opacity: 0;
+  }
+}
+
+
+@keyframes signup-success{
+  0%{
+    opacity: 0;
+  }
+  20%{
+    opacity: 1;
+  }
+  80%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+
+  }
+}
+
+@keyframes signup-success-out{
+  0%{
+    z-index: 999;
+    opacity: 1
+  }
+  50%{
+    z-index: 999;
+    opacity: 0;
+  }
+
+  100%{
+    z-index: -1;
+    opacity: 0;
+
+  }
+}
+
+//----------------------------------------------
+//  Signup message
+//
+//  @group: signup
+//-----------------------------------------------
+.signup-message{
+  opacity: 0;
+
+  p{
+    font-size: 1em;
+  }
+}
+
+.submit-success{
+  .signup{
+
+  }
+  .signup-message{
+    opacity: 1;
+    animation: fade-in 1.5s 1s ease;
+    transition: opacity 1s ease;
+  }
+}
+
+
+.has-invalid {
+  color: $color-alert;
+}

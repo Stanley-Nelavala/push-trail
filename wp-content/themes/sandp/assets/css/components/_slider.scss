@@ -1,0 +1,69 @@
+/*--------------------------------------------------- 
+SLIDER
+Styles for image-based slick sliders
+
+@link: scss/vendor/_slick.scss
+@link: js/vendor/slick.js
+---------------------------------------------------  */
+.slider--imgs{
+  padding-bottom: $pad-sm;
+  
+  .slider__item{
+    background-color: $color-black;
+
+    img{
+      width: 100%;
+      opacity: 0.7;
+    }
+  }
+  .slider__item, .slider__item img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/*--------------------------------------------------- 
+Slider Modifer: nav dots over top of images.
+---------------------------------------------------  */
+.slider--dotsontop{
+  padding-bottom: 0;
+  position: relative;
+  
+  .js-slider-imgs:after{
+    content: '';
+    z-index: 91;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-image: linear-gradient(to bottom, transparent 70%, rgba(0,0,0, 0.6) 100%);
+  }
+  .slick-dots {
+    z-index: 99;
+    bottom: 1em;
+  }
+  .slick-dots li button{
+    border: 1px solid rgba(255,255,255,0.8)
+  }
+
+  .slick-dots .slick-active button,
+  .slick-dots li button:hover:before, 
+  .slick-dots li button:focus:before{
+    background-color: #fff;
+    opacity: 1;
+  }
+}
+
+.text-slider{
+  padding: $pad-lg 0;
+
+  .slider__item{
+    opacity: 0;
+    //animation: fade-out 0.4s ease both;
+  }
+
+  .slick-current{
+    animation: fade-in 2s ease both;
+  }
+}

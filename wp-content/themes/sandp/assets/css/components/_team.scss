@@ -1,0 +1,248 @@
+/*---------------------------------------------------
+TEAM
+Team Container
+---------------------------------------------------  */
+.teams {
+  background-color: $color-dark;
+
+  &__grid {
+    @include flex-grid(1,3,3,4);
+
+    position: relative;
+
+    // background-color: $color-dark;
+  }
+
+  &.animated {
+    background-color: $color-dark;
+    animation: bg-in 1s 1s ease both;
+  }
+}
+
+/*---------------------------------------------------
+TEAMS - Side and Pete
+---------------------------------------------------  */
+.teams--sid-pete {
+  @media (min-width: $mq-med) {
+    display: flex;
+  }
+
+  .team {
+
+    @media (min-width: $mq-med) {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+
+    &__link {
+      padding-bottom: 75%;
+    }
+
+    &__header {
+      width: 100%;
+    }
+  }
+}
+
+/*---------------------------------------------------
+TEAM
+Block level team element
+---------------------------------------------------  */
+.team {
+  position: relative;
+
+  color: #fff;
+  background: $color-darkgrey;
+  transition: background 0.5s ease;
+
+  &__link {
+    position: relative;
+
+    display: block;
+    padding-bottom: 90%;
+
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  &__bg {
+    z-index: 0;
+
+    opacity: 0.6;
+    filter: grayscale(100%);
+    @include bg-img-abs();
+    transition: transform 3s, opacity 1s;
+  }
+
+  &__header {
+    @include abs-flex-fill;
+
+    padding: 0 1em;
+  }
+
+  &__title {
+    @extend %font-block-title;
+
+    font-size: $font-h3;
+    line-height: 1.3;
+    // word-spacing: 9999px;
+  }
+
+  &__subtitle {
+    @extend %font-subtitle;
+  }
+
+  &__position {
+    line-height: 1.2;
+  }
+
+  .sep-center {
+    margin: 1em auto;
+  }
+}
+
+.team:hover {
+  transition: background 2s $ease-cb !important;
+
+  .team__link {
+    color: #fff;
+    transition: color 1s ease;
+  }
+  .team__bg {
+    opacity: 0.3;
+    transform: scale(1.2);
+    transition: transform 15s, opacity 1s;
+  }
+}
+
+/*---------------------------------------------------
+TEAM SINGLE
+---------------------------------------------------  */
+.single-team {
+
+  .site-header {
+    display: none;
+  }
+
+  .content,
+  .slider,
+  .gallery {
+    margin-bottom: $pad-sm;
+  }
+
+  .post-footer {
+    padding-top: 0;
+  }
+}
+
+/*---------------------------------------------------
+TEAM NAV
+Styles for the Team CPT navigation
+---------------------------------------------------  */
+.team-nav {
+  position: fixed;
+  top: 40%;
+  left: 0;
+  z-index: $z-overlays;
+
+  width: 100%;
+
+  a {
+    font-size: 1.5em;
+    @include link-styles(#fff, rgba(255,255,255,0.7));
+  }
+
+  &__left {
+    position: absolute;
+    left: 1em;
+  }
+
+  &__right {
+    position: absolute;
+    right: 1em;
+  }
+
+  &__left,
+  &__right {
+    transition: transform 0.6s $ease-cb2;
+
+    &:hover {
+      transform: scale(0.8);
+      transition: transform 0.6s $ease-cb2;
+    }
+  }
+
+  &__close {
+    position: fixed;
+    top: 1em;
+    right: 0.5em;
+    z-index: $z-overlays;
+
+    transition: transform 0.7s $ease-cb2;
+
+    &:active {
+      border: none;
+    }
+
+    &:hover {
+      transform: scale(0.8);
+      transition: transform 0.7s $ease-cb2;
+
+      .close-circle {
+        background: rgba(0,0,0,0.7);
+        transition: background 0.6 $ease-cb2;
+      }
+    }
+  }
+
+  &__x {
+    position: absolute;
+    top: 50%;
+    z-index: $z-higher;
+
+    display: block;
+
+    &:after, &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      z-index: -1;
+
+      display: block;
+      width: 1.855555rem;
+      height: 1px;
+
+      background: #fff;
+      zoom: 1;
+      transition: all 0.4s ease-in-out;
+    }
+    &:after{
+      transform: rotate(45deg);
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+  }
+  .close-circle{
+    z-index: $z-high;
+    position: relative;
+    left: -0.5em;
+    height: 2em;
+    width: 2em;
+    display: block;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.1);
+    border-radius: 100%;
+    transition: background 0.7s $ease-cb2;
+  }
+}
+
+.scrolling-down .team-nav{
+  a{
+    color: $color-black;
+  }
+  .close-circle{
+    background-color: rgba(0,0,0,0.7);
+  }
+}

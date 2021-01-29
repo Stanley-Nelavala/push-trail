@@ -1,0 +1,115 @@
+//----------------------------------------------
+//  Modals
+//  Modals are triggered from inside the
+//  PopUp component.
+//
+//  @group Modals
+//  @see js/components/_popups.js
+//  @see scss/components/_popups.scss
+//----------------------------------------------
+.modal{
+  display: block;
+  width: 95%;
+  max-width: 60em;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+  overflow:hidden;
+  @media (min-width: $mq-med){
+    display: flex;
+    flex-direction: row;
+    min-height: 30em;
+    width: 80%;
+  }
+
+
+  // Columns
+  &__col{
+    position: relative;
+    background-color: #fff;
+    @media (min-width: $mq-med){
+      flex-basis: 50%;
+      max-width: 50%;
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      justify-content: center;
+    }
+  }
+
+  // Make Bg Img col wider
+  &__col.has-bg{
+    @include flex-col(70%);
+    min-height: 15em;
+  }
+  // Absolutely positioned bg image
+  &__bg{
+    @include bg-img-abs;
+    min-height: 15em;
+    transform: scale(1);
+    transition: transform 0.4s ease;
+  }
+
+  // Main Content
+  &__content{
+    position: relative;
+    width: 95%;
+    background-color: #fff;
+    color: $color-grey;
+    padding: 2em;
+    text-align: center;
+    @media (min-width: $mq-med){
+      width: 90%;
+    }
+  }
+  // Tags / Meta
+  &__tag, &__pretitle{
+    @include abs-center();
+    @extend %font-subtitle;
+  }
+
+  // Title
+  &__title{
+    margin: 1.5em auto 0.5em;
+    font-size: $font-h4;
+    font-weight: 500;
+    @extend %font-title-light;
+
+  }
+
+  // Max width the text
+  &__text{
+    max-width: 22em;
+    margin: 0 auto 1.5em;
+    line-height: 1.4;
+  }
+
+  &__divider{
+    font-family: $font-header;
+    text-transform: uppercase;
+    margin: 0.5em auto;
+  }
+
+  // Button
+  &__btn{
+    @media (min-width: $mq-med){
+      //@include abs-centered($bottom: 1em);
+    }
+  }
+}
+
+.is-open .modal{
+  animation: scale-in 0.25s ease-in both;
+}
+
+//----------------------------------------------
+// Modal Signup
+//----------------------------------------------
+.modal--signup{
+
+  .has-bg{
+    background-color: $color-dark;
+
+    .modal__bg{
+      opacity: 0.8;
+    }
+  }
+}

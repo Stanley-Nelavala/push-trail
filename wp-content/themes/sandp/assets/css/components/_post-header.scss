@@ -1,0 +1,35 @@
+//--------------------------------------------------- 
+//  POST HEADER
+//  Header region used in single post layouts
+//
+//  @see: partials/partial-post-header.php
+//--------------------------------------------------- 
+.post-header {
+  text-align: center;
+  margin: 0 auto;
+  padding: $pad 0 $pad/1.5;
+
+  &__pretitle{
+    max-width: 30em;
+    margin: 0 auto;
+  }
+
+  &__pretitle, 
+  &__title{
+    @extend %font-title-light;
+  }
+
+  &__title{
+    //@extend %font-h2;
+    max-width: 25em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__byline {
+    @extend %font-links-small;
+
+    display: block;
+    padding-top: $pad-med;
+  }
+}

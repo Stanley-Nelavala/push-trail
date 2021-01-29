@@ -1,0 +1,39 @@
+/*----------------------------------------------   
+-bg color modifiers
+-----------------------------------------------  */
+
+.bg-white{
+ background-color: #fff;
+}
+
+.bg-black{
+ background-color: $color-black;
+ color: #fff;
+}
+
+.bg-dark{
+ background-color: $color-dark;
+}
+
+.bg-lightgrey{
+ background-color: $color-lightgrey;
+}
+.bg-softgrey{
+ background-color: $color-softgrey;
+}
+
+.bg-alpha{
+  background-color: $color-alpha;
+}
+
+.bg-beta{
+  background-color: $color-beta;
+}
+
+.bg-alert{
+  background-color: $color-alert;
+}
+
+.bg-success{
+  background-color: $color-success;
+}

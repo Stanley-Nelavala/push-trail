@@ -1,0 +1,45 @@
+/*----------------------------------------------   
+-Heading
+-----------------------------------------------  */
+.heading{
+  margin: 0 auto;
+  padding: $pad 0 0;
+  @extend .grid-lg;
+  
+  &__header, &__content{
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title{
+    @extend %font-title-light;
+  }
+  
+  &__text{
+    margin: 0 auto;
+    max-width: 54em;
+  }
+
+  &__lists{
+    margin: 3em auto;
+    @media(min-width: $mq-med){
+      max-width: $grid-max-width-lg;
+    }
+
+    li{
+      font-size: $font-small;
+    }
+  }
+
+/*----------------------------------------------   
+-Heading--Left modifier
+-----------------------------------------------  */
+  &.heading--left{
+    background-color: transparent;
+    
+    .heading__header, .heading__content{
+      margin: 0 auto;
+      text-align: left;
+    }
+  }
+}

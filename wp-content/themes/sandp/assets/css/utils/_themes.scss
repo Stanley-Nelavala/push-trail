@@ -1,0 +1,22 @@
+/*----------------------------------------------
+-Themes
+@description: for managing section's color themes, esp via cms controls.
+-----------------------------------------------*/
+[data-theme="light"], [data-theme="light"] a{
+  background: #fff;
+  color: $color-black;
+}
+
+[data-theme="grey"]{
+  background: $color-softgrey;
+  color: $color-black;
+}
+
+[data-theme="dark"]{
+  background: $color-grey;
+  color: #fff;
+
+  h1,h2,h3,h4,h5{
+    color: #fff;
+  }
+}

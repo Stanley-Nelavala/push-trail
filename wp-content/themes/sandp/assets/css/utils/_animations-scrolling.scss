@@ -1,0 +1,215 @@
+//----------------------------------------------
+//  Scrolling Animations
+//  @see: js/vendor/waypoints.js
+//  @see: js/component/scroll-animations.js
+//----------------------------------------------
+
+//----------------------------------------------
+// Fade in
+//----------------------------------------------
+[data-scroll="fade-in"]{
+  will-change: opacity;
+  pointer-events: none;
+  backface-visibility: hidden;
+
+  @media(min-width: $mq-med){
+    opacity:0;
+  }
+  &.animated{
+    opacity: 1;
+    pointer-events:auto;
+    transition: opacity 0.5s ease;
+  }
+}
+
+
+//----------------------------------------------
+// Stagger fade in of list items
+//----------------------------------------------
+[data-scroll="fade-in-list"]{
+ will-change: opacity;
+ backface-visibility: hidden;
+
+  @media(min-width: $mq-med){
+    opacity:0;
+  }
+
+  li{
+    backface-visibility: hidden;
+    @media(min-width: $mq-med){
+      opacity:0;
+      pointer-events: none;
+    }
+  }
+
+  &.animated{
+    opacity: 1;
+    transition: opacity 0.5s ease;
+
+    li{
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 0.75s ease;
+      @include nth-trans-delay(6, 0.2s);
+    }
+  }
+}
+
+
+//----------------------------------------------
+// Fade Up
+//----------------------------------------------
+[data-scroll="fade-up"]{
+  position: relative;
+  will-change: opacity;
+  overflow-y: hidden;
+  backface-visibility: hidden;
+
+  @media(min-width: $mq-med){
+    opacity:0;
+    pointer-events: none;
+    //transform: translate3d(0,50%,0);
+  }
+  &.animated{
+    opacity: 1 !important;
+    transition: opacity 0.5s ease;
+    pointer-events: auto;
+    animation: fade-up 0.45s ease both;
+  }
+}
+
+
+//----------------------------------------------
+// Stagger Up children
+//----------------------------------------------
+[data-scroll="stagger-up"]{
+  position: relative;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+
+  .sep, .sep-center{
+    width: 0;
+  }
+
+  & > *{
+    opacity:0 !important;
+    backface-visibility: hidden;
+    @include engine3d('transform');
+
+    @media(min-width: $mq-med){
+      position: relative;
+      opacity:0;
+      transform: translate3d(0,50%,0);
+    }
+  }
+
+  &.animated{
+     .sep, .sep-center{
+      width: 4em;
+      transition: width 1.2s ease;
+    }
+
+    & > * {
+      opacity:1 !important;
+      transform: none;
+      transition: transform 0.75s $ease-cb2, opacity 0.75s ease;
+      backface-visibility: hidden;
+      @include nth-trans-delay(10, .1s);
+    }
+  }
+}
+
+
+
+//----------------------------------------------
+// Stagger in list items or articles
+//----------------------------------------------
+
+[data-scroll="fade-up-list"]{
+ position: relative;
+ will-change: opacity;
+ backface-visibility: hidden;
+
+  li, article{
+    position: relative;
+    opacity:0;
+    pointer-events: none;
+    transform: translateY(50%);
+    backface-visibility: hidden;
+  }
+
+  &.animated{
+
+    li, article{
+      opacity:1;
+      transform: translateY(0em);
+      pointer-events: auto;
+      transition: opacity 1.5s ease, transform 0.6s $ease-cb2;
+     @include nth-trans-delay(10, .1s);
+    }
+  }
+}
+
+//----------------------------------------------
+// Fade
+//----------------------------------------------
+[data-scroll="fade"]{
+  [data-scroll="fade-up"].animated{
+    backface-visibility: hidden;
+    @include nth-ani-delay(10, .015s);
+  }
+}
+
+
+//----------------------------------------------
+// No Js fallback
+//----------------------------------------------
+.no-js{
+  [data-scroll]{
+    opacity:1;
+  }
+  li{
+    opacity:1;
+    pointer-events:auto;
+  }
+}
+
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+//----------------------------------------------
+// Has Image Preloader, fade in
+//----------------------------------------------
+.has-preloader{
+  //min-height: 17em;
+
+  & > img, [class*="__img"]{
+    opacity: 0;
+    //will-change: opacity;
+    //transition: opacity 1s ease-in, transform 1s $ease-cb;
+  }
+
+  // Boom - We're loaded.
+  &.is-loaded{
+
+    .preloader{
+      opacity: 0;
+      backface-visibility: hidden;
+      transition: opacity 1s 0.7s ease-out;
+    }
+    & > img, [class*="__img"]{
+      opacity: 1;
+      backface-visibility: hidden;
+      transition: opacity 1s 0.7s ease-in, transform 5s ease;
+      //animation: fade-in 4s 0.3s ease both;
+    }
+  }
+}
+
+.is-loaded{
+  [class*="__bg"]{
+    animation: fade-in 1.5s ease-in both;
+  }
+}
