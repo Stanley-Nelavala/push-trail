@@ -249,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #9f5f80;
   width: 100%;
   height: 100vh;
-  background: url("../vimg/hero-bg.jpg") top right no-repeat;
+  background: url("vidyabg.jfif") top right no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -383,7 +383,7 @@ section {
   font-size: 26px;
   color: #0c0c0c;
 }
-.vimg-fluid{
+.img-fluid{
   border-radius: 10%;
 }
 .about .content ul {
@@ -518,7 +518,7 @@ section {
   text-align: center;
 }
 
-.testimonials .testimonial-item .testimonial-vimg {
+.testimonials .testimonial-item .testimonial-img {
   width: 120px;
   border-radius: 50%;
   border: 4px solid #fff;
